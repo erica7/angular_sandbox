@@ -1,0 +1,4 @@
+<app-quotes-new (newQuoteEmitter)="addQuote($event)"></app-quotes-new>
+<app-quotes-list [theQuotes]="quotes" (upVoteEmitter)="upVote($event)" (downVoteEmitter)="downVote($event)" (deleteEmitter)="delete($event)"></app-quotes-list>
+
+{{quotes}}
