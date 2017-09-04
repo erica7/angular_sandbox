@@ -1,0 +1,15 @@
+<p>
+  power works!
+</p>
+
+<form (submit)="onSubmit()">
+  Initial Power Level:
+  <input type="number" name="initialPower" required [(ngModel)]="initialPower" #power="ngModel"> {{ power.errors | json }} {{ power.valid | json }}<br>
+  <input type="submit" value="Calculate Power">
+</form>
+
+{{ initialPower }}
+
+<app-human [initialPowerLevel]="initialPower"></app-human>
+<app-saiyan [initialPowerLevel]="initialPower"></app-saiyan>
+<app-super-saiyan [initialPowerLevel]="initialPower"></app-super-saiyan>

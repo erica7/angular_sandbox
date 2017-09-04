@@ -1,0 +1,20 @@
+.on {
+  background-color: #52D017;
+}
+.off {
+  background-color: #FF2400;
+}
+.inlineBlock {
+  display: inline-block;
+}
+.switchContainer {
+  height: 100px;
+  width: 100px;
+}
+.switch {
+  height: 80px;
+  width: 80px;
+}
+.selected {
+  background-color: aquamarine;
+}

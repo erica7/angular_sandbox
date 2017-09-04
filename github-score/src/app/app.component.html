@@ -1,0 +1,34 @@
+<h1>GitHub Score</h1>
+<h4>Enter a GitHub username to see its score (the sum of sum of the followers and the public repos)</h4>
+
+<form (submit)="onSubmit()">
+  <label for="username">GitHub Username</label>
+  <input type="text" name="username" autofocus required minlength="2" maxlength="222" [(ngModel)]="username" #uname="ngModel"> <br>
+  <!-- errors: {{ uname.errors | json }} <br>
+  valid: {{ uname.valid | json }} <br><br> -->
+  <input type="submit" value="Calculate my GitHub score" [disabled]="!uname.valid">
+</form>
+
+
+<hr>
+
+<div *ngIf="user.error">
+  <h3>{{ user.error }}</h3>
+</div>
+<div  *ngIf="user.login">
+  <h3>{{ user.login }}'s Score: {{ user.followers + user.public_repos }}</h3>
+  <p [ngStyle]="{color: 'red'}" *ngIf="user.followers + user.public_repos < 20">Needs work</p>
+  <p [ngStyle]="{color: 'orange'}" *ngIf="user.followers + user.public_repos >= 20 && user.followers + user.public_repos < 50">A decent start</p>
+  <p [ngStyle]="{color: 'black'}" *ngIf="user.followers + user.public_repos >= 50 && user.followers + user.public_repos < 100">Doing good</p>
+  <p [ngStyle]="{color: 'green'}" *ngIf="user.followers + user.public_repos >= 100 && user.followers + user.public_repos < 200">Great job</p>
+  <p [ngStyle]="{color: 'blue'}" *ngIf="user.followers + user.public_repos >= 200">GitHub elite</p>
+  <img src="{{ user.avatar_url }}" alt="avatar">
+  <p>Followers: {{ user.followers }}</p>
+  <p>Public repos: {{ user.public_repos }}</p>
+</div>
+
+
+<hr>
+<p>{{ username }}</p>
+<p>json: {{ user | json }}</p>
+<hr>

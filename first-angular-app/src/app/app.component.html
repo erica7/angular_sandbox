@@ -1,0 +1,19 @@
+<h1>Dojo Mail</h1>
+<table>
+  <thead>
+    <th>Email</th>
+    <th>Importance</th>
+    <th>Subject</th>
+    <th>Content</th>
+  </thead>
+  <tr *ngFor="let each of emails">
+    <td>{{each.email}}</td>
+    <td *ngIf="each.importance">High</td>
+    <td *ngIf="!each.importance">Low</td>
+    <td>{{each.subject}}</td>
+    <td>{{each.content}}</td>
+  </tr>
+</table>
+
+<h1>Retro Barcode Generator</h1>
+<div *ngFor='let color of randomColors' [ngStyle]="{'background-color': color, 'height': '100px', 'width': '100px'}"></div>

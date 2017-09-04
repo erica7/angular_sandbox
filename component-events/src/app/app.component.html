@@ -1,0 +1,32 @@
+<h1>US Time Zone Display</h1>
+<button (click)="updateTimeZone('pst')" [ngClass]="{selected: lastSelected === 'pst'}">PST</button>
+<button (click)="updateTimeZone('mst')" [ngClass]="{selected: lastSelected === 'mst'}">MST</button>
+<button (click)="updateTimeZone('cst')" [ngClass]="{selected: lastSelected === 'cst'}">CST</button>
+<button (click)="updateTimeZone('est')" [ngClass]="{selected: lastSelected === 'est'}">EST</button>
+<button (click)="updateTimeZone('clear')">Clear</button>
+<h2>{{ current | date:'y MMM d, HH:mm' }}</h2>
+<hr>
+<h1>Switchboard</h1>
+<div *ngFor='let switch of switches; let i = index' class="switchContainer inlineBlock">
+  <button class="switch" (click)='switchClick(i)' [ngClass]="{'on': switch == 'on', 'off': switch == 'off'}">{{ switch }}</button>
+</div>
+<hr>
+<h1>Registration</h1>
+<form (submit)="onSubmit()">
+  First name: <input type="text" name="firstName" required minlength="2" maxlength="22" [(ngModel)]="user.firstName" #firstName='ngModel'> {{ firstName.errors | json }} {{ firstName.valid | json }}<br>
+  Last name: <input type="text" name="lastName" required minlength="2" maxlength="22" [(ngModel)]="user.lastName" #lastName='ngModel'> {{ lastName.errors | json }} {{ lastName.valid | json }}<br>
+  Email: <input type="text" name="email" required minlength="2" maxlength="22" [(ngModel)]="user.email" #email='ngModel'> {{ email.errors | json }} {{ email.valid | json }}<br>
+  Password: <input type="text" name="password" required minlength="2" maxlength="22" [(ngModel)]="user.password" #password='ngModel'> {{ password.errors | json }} {{ password.valid | json }}<br>
+  Password Confirmation: <input type="text" name="passwordConfirmation" required minlength="2" maxlength="22" [(ngModel)]="user.passwordConfirmation" #passwordConfirmation='ngModel'> {{ passwordConfirmation.errors | json }} {{ passwordConfirmation.valid | json }}<br>
+  Street Address: <input type="text" name="streetAddress" required minlength="2" maxlength="22" [(ngModel)]="user.streetAddress" #streetAddress='ngModel'> {{ streetAddress.errors | json }} {{ streetAddress.valid | json }}<br>
+  Unit/Apt #: <input type="text" name="unitNum" required minlength="2" maxlength="22" [(ngModel)]="user.unitNum" #unitNum='ngModel'> {{ unitNum.errors | json }} {{ unitNum.valid | json }}<br>
+  City: <input type="text" name="city" required minlength="2" maxlength="22" [(ngModel)]="user.city" #city='ngModel'> {{ city.errors | json }} {{ city.valid | json }}<br>
+  State: <input type="text" name="state" required minlength="2" maxlength="22" [(ngModel)]="user.state" #state='ngModel'> {{ state.errors | json }} {{ state.valid | json }}<br>
+  Feeling Lucky? <input type="radio" name="feeling" [(ngModel)]="user.feeling" #feeling='ngModel' value="true">Lucky
+  <input type="radio" name="feeling" [(ngModel)]="user.feeling" #feeling='ngModel' value="false">Unlucky {{ feeling.errors | json }} {{ feeling.valid | json }}<br>
+  <input type="submit" value="Register">
+</form>
+<h4>Users:</h4>
+<ul>
+  <li *ngFor='let user of users'>{{ user | json }}</li>
+</ul>
